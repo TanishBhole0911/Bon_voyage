@@ -1,0 +1,9 @@
+python-dotenv
+langchain
+grpcio
+protobuf
+grpcio-tools
+langchain-community
+google-ai-generativelanguage
+google-generativeai
+langchain_google_genai

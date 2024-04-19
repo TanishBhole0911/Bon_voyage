@@ -1,0 +1,4 @@
+grpcio
+protobuf
+requests
+python-dotenv

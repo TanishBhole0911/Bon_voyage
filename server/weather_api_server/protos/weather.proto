@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package weather_api;
+
+service LatLongService {
+    rpc GetForcasteWeather(Forcaste_Weather_req) returns (Forcaste_Weather_res) {}
+}
+message Forcaste_Weather_req {
+    string address = 1;
+}
+
+message Values {
+    float precipitationProbability = 1;
+    float temperature = 2;
+    string weatherCodeDay = 3;
+}
+
+message Interval {
+    string startTime = 1;
+    Values values = 2;
+}
+
+message Forcaste_Weather_res {
+    string timestep = 1;
+    string endTime = 2;
+    string startTime = 3;
+    repeated Interval intervals = 4;
+}

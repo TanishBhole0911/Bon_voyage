@@ -1,0 +1,9 @@
+python-dotenv
+grpcio
+protobuf
+langchain-community
+langchain
+google-ai-generativelanguage
+google-generativeai
+uvicorn
+fastapi

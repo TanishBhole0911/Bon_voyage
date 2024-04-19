@@ -1,0 +1,19 @@
+
+.tag-input {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.tag-input input {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    width: calc(100% - 80px);
+}
+
+.tag-input input:focus {
+    outline: none;
+    box-shadow: 0 0 2px 1px #4caf50;
+}

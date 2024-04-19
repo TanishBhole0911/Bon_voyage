@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package lat_long_api;
+
+service LatLongService {
+    rpc GetLatLong(LatLon_req) returns (LatLon_res) {}
+}
+message LatLon_req {
+    string address = 1;
+}
+
+message LatLon_res {
+    double latitude = 1;
+    double longitude = 2;
+}

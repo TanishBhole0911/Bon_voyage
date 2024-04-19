@@ -1,0 +1,75 @@
+syntax = "proto3";
+package users;
+
+//python -m grpc_tools.protoc -I../../protos --python_out=. --pyi_out=. --grpc_python_out=. ../../protos/helloworld.proto
+
+service Users{
+  rpc GetUsers (GetUsersRequest) returns (GetUsersResponse) {}
+
+  rpc GetUserById (GetUserByIdRequest) returns (GetUserByIdResponse) {}
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {}
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
+  rpc RestaurantSearch (RestaurantSearchRequest) returns (RestaurantSearchResponse) {}
+}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+  string password = 4;
+}
+
+message GetUsersRequest {
+
+}
+
+message GetUsersResponse {
+  repeated User users = 1;
+}
+
+message GetUserByIdRequest {
+  string id = 1;
+}
+
+message GetUserByIdResponse {
+  User user = 1;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message UpdateUserRequest {
+  User user = 1;
+}
+
+message UpdateUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  string id = 1;
+}
+
+message DeleteUserResponse {
+  User user = 1;
+}
+
+message RestaurantSearchRequest {
+  double lat = 1;
+  double lon = 2;
+  int32 categorySet = 3;
+  string view = 4;
+  string relatedPois = 5;
+  string key = 6;
+  int32 limit = 7;
+}
+
+message RestaurantSearchResponse {
+  string response = 1;
+}
