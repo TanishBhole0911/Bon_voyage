@@ -31,10 +31,16 @@ export default function Home() {
     //     "out_date": "06-04-2024"
     // }
     //get the difference between the dates
-    const date1 = new Date(e.target[1].value);
-    const date2 = new Date(e.target[2].value);
+    const date1 = new Date(e.target[2].value);
+
+    const date2 = new Date(e.target[3].value);
     const diffTime = Math.abs(date2 - date1);
+    //change the date format from yyyy-mm-dd to dd-mm-yyyy
+    const in_ = e.target[2].value.split("-").reverse().join("-");
+    const out_ = e.target[3].value.split("-").reverse().join("-");
+    console.log(diffTime);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    console.log(diffDays);
     fetch("http://localhost:3001/chat", {
       method: "POST",
       headers: {
@@ -45,10 +51,10 @@ export default function Home() {
         Food: foodPreferences.join(","),
         Interests: interests.join(","),
         Health: healthIssues.join(","),
-        Days: diffDays,
+        Days: 5,
         email: e.target[1].value,
-        in_date: e.target[1].value,
-        out_date: e.target[2].value,
+        in_date: in_,
+        out_date: out_,
       }),
     })
       .then((response) => response.json())

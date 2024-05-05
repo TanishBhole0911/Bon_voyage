@@ -6,6 +6,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const { expressjwt: jwt } = require("express-jwt");
 const jwksRsa = require("jwks-rsa");
+const { redirect } = require("next/dist/server/api-utils");
 
 const app = express();
 const port = process.env.API_PORT || 3001;
@@ -49,14 +50,16 @@ app.get("/api/shows", checkJwt, (req, res) => {
 });
 app.post("/chat", (req, res) => {
   console.log(req.body);
-
-  fetch("http://127.0.0.1:8000/chat", {
+  const request_options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(req.body),
-  })
+    redirect: "follow",
+  };
+
+  fetch("http://127.0.0.1:8000/chat", request_options)
     .then((response) => response.json())
     .then((data) => {
       console.log("Success:", data);
@@ -66,6 +69,7 @@ app.post("/chat", (req, res) => {
       console.error("Error:", error);
     });
 });
+
 const server = app.listen(port, () =>
   console.log(`API Server listening on port ${port}`)
 );
